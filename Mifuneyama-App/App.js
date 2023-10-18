@@ -1,11 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useFonts } from "expo-font";
+import { StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator } from "react-native-web";
+import AppNavigator from "./src/components/Navigation/AppNavigator";
+import { COLORS, GLOBAL_STYLES } from "./src/themes";
 
 export default function App() {
+  const [fontsLoad] = useFonts({
+    "ZuumeSoft-LightItalic": require("./assets/fonts/ZuumeSoft-LightItalic.ttf"),
+  });
+
+  if (!fontsLoad) {
+    return (
+      <View style={{ flex: 1, ...GLOBAL_STYLES.flexCenter }}>
+        <ActivityIndicator size="large" color={COLORS.grey} />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <AppNavigator />
+      {/* <Text>dasdasd</Text> */}
     </View>
   );
 }
@@ -13,8 +28,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
