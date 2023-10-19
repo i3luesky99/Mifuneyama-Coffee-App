@@ -18,7 +18,7 @@ function Introduce({ navigation }) {
         <Text style={styles.text}>COFFEE</Text>
         <TouchableOpacity
           style={[styles.bottomButton, { backgroundColor: COLORS.lightRed }]}
-          onPress={handleChangeToHome()}
+          onPress={handleChangeToHome}
         >
           <Text style={styles.buttonText}>Trang chủ</Text>
         </TouchableOpacity>

@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import { BottomWelcome, Home, Welcome } from "../../screens";
+import { BottomWelcome, Home, HomeTab, Welcome } from "../../screens";
 import { StatusBar } from "react-native";
 
 const Stack = createStackNavigator();
@@ -18,10 +18,10 @@ export default function AppNavigator() {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={"Welcome"}
+        initialRouteName={"HomeTab"}
       >
-        <Stack.Screen name="Welcome" component={BottomWelcome} />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="WelcomeTab" component={BottomWelcome} />
+        <Stack.Screen name="HomeTab" component={HomeTab} />
       </Stack.Navigator>
     </NavigationContainer>
   );
