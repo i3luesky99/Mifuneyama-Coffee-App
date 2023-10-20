@@ -1,8 +1,11 @@
 import { useFonts } from "expo-font";
-import { StyleSheet, Text, View } from "react-native";
-import { ActivityIndicator } from "react-native-web";
+import { StyleSheet, View } from "react-native";
+import { ActivityIndicator } from "react-native";
 import AppNavigator from "./src/components/Navigation/AppNavigator";
 import { COLORS, GLOBAL_STYLES } from "./src/themes";
+import * as SplashScreen from 'expo-splash-screen';
+import { useCallback } from "react";
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [fontsLoad] = useFonts({
@@ -21,6 +24,12 @@ export default function App() {
     "SourceSansPro-Regular": require("./assets/fonts/SourceSansPro-Regular.ttf"),
     "ZuumeSoft-Light": require("./assets/fonts/NotoSansCJKjp-Regular.ttf"),
   });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoad]);
 
   if (!fontsLoad) {
     return (

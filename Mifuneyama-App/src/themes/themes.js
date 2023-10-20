@@ -1,17 +1,5 @@
 import { Dimensions } from "react-native";
 
-import {
-  colors,
-  globalStyles,
-  SIZES,
-  SCREEN_PADDING,
-  configSwipeGesture,
-  hitSlopIcon,
-  ios,
-  buttonSave,
-  buttonCancel,
-} from "./theme";
-
 export const { width: WINDOW_WIDTH, height: WINDOW_HEIGHT } =
   Dimensions.get("window");
 
@@ -125,16 +113,4 @@ export const [screen_width_small, screen_width_medium, screen_width_large] = [
   WINDOW_WIDTH.toFixed() > 400 && WINDOW_WIDTH.toFixed() <= 420,
 ];
 
-export {
-  colors,
-  globalStyles,
-  SIZES,
-  SCREEN_PADDING,
-  configSwipeGesture,
-  hitSlopIcon,
-  ios,
-  buttonSave,
-  buttonCancel,
-  getLocationMarker,
-  onSwipe,
-};
+export { getLocationMarker, onSwipe };
