@@ -6,3 +6,4 @@ export { default as Notification } from "./Notification/Notification";
 export { default as Introduce } from "./Introduce/Introduce";
 export { default as BottomWelcome } from "../components/BottomNavigation/BottomWelcome";
 export { default as HomeTab } from "../components/HomeTab/HomeTab";
+export { default as ProductMenu } from "./ProductMenu/ProductMenu";

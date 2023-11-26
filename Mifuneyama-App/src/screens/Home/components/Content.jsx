@@ -33,7 +33,9 @@ function Content({ HEIGHT_CONTENT, navigation }) {
       <View style={[styles.customerInfo, { height: HEIGHT_CONTENT }]}>
         <View style={styles.topContent}>
           <Image source={houseIconPath} style={[styles.icon]} />
-          <Text style={styles.topContentText}>あなたの街の珈琲屋</Text>
+          <Text style={styles.topContentText}>
+            Quán cà phê ở thành phố của bạn
+          </Text>
         </View>
         <BoxChat home={true} />
         <TouchableOpacity
@@ -41,7 +43,7 @@ function Content({ HEIGHT_CONTENT, navigation }) {
           onPress={handleOpenShopsDetail}
         >
           <WarningIcon style={styles.iconInformation} fill={COLORS.lightRed} />
-          <Text style={styles.bottomMiddleContentText}>店舗情報を見る</Text>
+          <Text style={styles.bottomMiddleContentText}>Thông tin cửa hàng</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
@@ -51,7 +53,7 @@ function Content({ HEIGHT_CONTENT, navigation }) {
           onPress={handleOpenDialogQRcode}
           disabled={token ? false : true}
         >
-          <Text style={styles.buttonText}>来店する (ポイント)</Text>
+          <Text style={styles.buttonText}>Cửa hàng (Các sản phẩm)</Text>
         </TouchableOpacity>
         {/* <Popup navigation={navigation} /> */}
       </View>
@@ -75,14 +77,12 @@ const styles = StyleSheet.create({
   },
   bottomMiddleContentText: {
     color: COLORS.lightRed,
-    fontFamily: ios ? "NotoSansCJKjp-Black" : "Hiragino-Gothic8",
     fontWeight: "500",
     marginLeft: 8,
   },
 
   buttonText: {
     color: COLORS.white,
-    fontFamily: "NotoSansCJKjp-Bold",
     textAlign: "center",
   },
 
@@ -109,13 +109,12 @@ const styles = StyleSheet.create({
   topContent: {
     flexDirection: "row",
     marginTop: 20,
+    marginBottom: 20,
   },
   topContentText: {
     color: COLORS.darkBrown,
-    fontFamily: ios ? "NotoSansCJKjp-Regular" : "Hiragino-Gothic8",
     fontSize: SIZES.medium,
     fontWeight: "600",
-    letterSpacing: 3,
   },
 });
 

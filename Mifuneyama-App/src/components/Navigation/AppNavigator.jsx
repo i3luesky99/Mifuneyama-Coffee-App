@@ -1,7 +1,13 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import { BottomWelcome, Home, HomeTab, Welcome } from "../../screens";
+import {
+  BottomWelcome,
+  Home,
+  HomeTab,
+  ProductMenu,
+  Welcome,
+} from "../../screens";
 import { StatusBar } from "react-native";
 
 const Stack = createStackNavigator();
@@ -18,10 +24,11 @@ export default function AppNavigator() {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={"HomeTab"}
+        initialRouteName={"ProductMenu"}
       >
         <Stack.Screen name="WelcomeTab" component={BottomWelcome} />
         <Stack.Screen name="HomeTab" component={HomeTab} />
+        <Stack.Screen name="ProductMenu" component={ProductMenu} />
       </Stack.Navigator>
     </NavigationContainer>
   );

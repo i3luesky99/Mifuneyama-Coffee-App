@@ -35,7 +35,7 @@ function BoxChat(props) {
 
   return (
     <View style={[styles.centerContent, { marginTop: home ? 20 : 0 }]}>
-      <View style={{}}>
+      <View>
         {path ? (
           <>
             {loading ? (
@@ -52,19 +52,23 @@ function BoxChat(props) {
             style={[styles.staffIcon]}
           />
         )}
-        <Text style={styles.staffText}>本店スタッフ</Text>
+        <Text style={styles.staffText}>Nhân viên</Text>
       </View>
       <View style={styles.boxChat}>
         <View style={styles.triangle} />
         {home && (
-          <View style={{ height: 90, justifyContent: "center" }}>
+          <View
+            style={{
+              height: 100,
+              justifyContent: "center",
+              width: 280,
+              alignItems: "center",
+            }}
+          >
             <Text style={styles.centerContentText}>
-              もっとお客様との距離を珈琲で
+              Chúng tôi đã tạo một ứng dụng cho cửa hàng của mình với hy vọng
+              đưa chúng tôi đến gần hơn với khách hàng thông qua cà phê.
             </Text>
-            <Text style={styles.centerContentText}>
-              近づけたらと、お店のアプリを作成
-            </Text>
-            <Text style={styles.centerContentText}>しました。</Text>
           </View>
         )}
         {shopDetail && (
@@ -74,18 +78,18 @@ function BoxChat(props) {
                 <Text style={styles.centerContentText}>{introduction}</Text>
               </View>
             ) : (
-              <View style={{ height: 110, justifyContent: "center" }}>
+              <View
+                style={{
+                  height: 90,
+                  justifyContent: "center",
+                  width: 250,
+                  alignItems: "center",
+                }}
+              >
                 <Text style={styles.centerContentText}>
-                  本店では珈琲豆を焙煎しているところ
-                </Text>
-                <Text style={styles.centerContentText}>
-                  を見る事ができます。
-                </Text>
-                <Text style={styles.centerContentText}>
-                  自分好みの珈琲豆をお探しの際は、
-                </Text>
-                <Text style={styles.centerContentText}>
-                  お気軽にスタッフまでお声掛けください。
+                  Tại cửa hàng chính, bạn có thể xem hạt cà phê được rang. Nếu
+                  bạn đang tìm kiếm hạt cà phê yêu thích của mình, vui lòng hỏi
+                  nhân viên của chúng tôi.
                 </Text>
               </View>
             )}
@@ -101,7 +105,8 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.normalGrey,
     borderRadius: 20,
     justifyContent: "center",
-    paddingLeft: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
     // width: "80%",
   },
   centerContent: {
@@ -112,8 +117,8 @@ const styles = StyleSheet.create({
     color: COLORS.blackest,
     fontSize: SIZES.title,
     fontWeight: "500",
-    letterSpacing: -1,
     lineHeight: 20,
+    textAlign: "justify",
   },
   staffIcon: {
     borderRadius: 50,
@@ -123,7 +128,6 @@ const styles = StyleSheet.create({
   },
   staffText: {
     color: COLORS.darkBrown,
-    fontFamily: ios ? "NotoSansCJKjp-Black" : "Hiragino-Gothic6",
     fontSize: SIZES.small - 1,
     fontWeight: "400",
     lineHeight: 20,
