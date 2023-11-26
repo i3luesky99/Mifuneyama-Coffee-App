@@ -7,16 +7,18 @@ import {
   View,
 } from "react-native";
 import React, { useEffect } from "react";
-import { COLORS, GLOBAL_STYLES, SCREEN_PADDING, SIZES } from "../../themes";
+import { COLORS, SCREEN_PADDING, SIZES } from "../../themes";
 import { Animated } from "react-native";
 import { WINDOW_WIDTH } from "../../themes/themes";
 import moment from "moment/moment";
 import "moment-timezone";
 import Content from "./components/Content";
+import BottomDrawer from "./components/BottomDrawer";
 
 export default function Home({ navigation }) {
   const HEADER_HEIGHT = 420; //Header
   const HEIGHT_CONTENT = 580; //Content
+  const DOWN = 245; //Bottom
   const hours = moment.tz("Asia/Ho_Chi_Minh").format("HH");
   const greetingOpacity = new Animated.Value(0);
 
@@ -44,7 +46,7 @@ export default function Home({ navigation }) {
   useEffect(() => {
     handleOpacityText();
   }, []);
-  
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -69,6 +71,15 @@ export default function Home({ navigation }) {
         </View>
         <Content HEIGHT_CONTENT={HEIGHT_CONTENT} navigation={navigation} />
       </ScrollView>
+      <BottomDrawer
+        DOWN={DOWN}
+        navigation={navigation}
+        shopID={1}
+        latitude={1}
+        longitude={1}
+        mainShop={1}
+        shopInfo={1}
+      />
     </View>
   );
 }

@@ -24,7 +24,7 @@ export default function AppNavigator() {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={"ProductMenu"}
+        initialRouteName={"HomeTab"}
       >
         <Stack.Screen name="WelcomeTab" component={BottomWelcome} />
         <Stack.Screen name="HomeTab" component={HomeTab} />
