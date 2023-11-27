@@ -19,7 +19,7 @@ const COLORS = {
   lightestGrey: "#f8f4f4",
   normalBlack: "#373737",
   normalBrown: "#532d20",
-  normalGrey: "#c2c3be",
+  normalGrey: "#f8f4f4",
   whiteBrown: "#936c5b",
   green: "#d4ec64",
   trueBrown: "#391e1e",

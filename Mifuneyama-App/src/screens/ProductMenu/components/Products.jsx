@@ -14,7 +14,17 @@ const Products = ({ navigation, arr_products_sort_by_category_id, images }) => {
   const onHandleChangToCategoryDetail = (product) => {
     navigation.navigate("ProductDetail", { product: product });
   };
-
+  let SIZE_IMAGE = 0;
+  switch (true) {
+    case screen_width_medium:
+      SIZE_IMAGE = 163;
+      break;
+    case screen_width_large:
+      SIZE_IMAGE = 175;
+      break;
+    default:
+      SIZE_IMAGE = 155;
+  }
   return (
     <View style={{ flex: 1 }}>
       {arr_products_sort_by_category_id?.length > 0 ? (

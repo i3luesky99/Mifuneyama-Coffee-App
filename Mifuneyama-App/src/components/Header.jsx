@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { COLORS, GLOBAL_STYLES, hitSlopIcon, SIZES } from "../themes";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { LogoutIcon } from "../../assets/images";
+import LogoutIcon from "../../assets/images/svg/logout";
 import ArrowIcon from "../../assets/images/svg/arrow";
 
 function Header({
@@ -19,14 +18,6 @@ function Header({
 
   const handleLogOut = async () => {
     navigation.navigate("WelcomeTab");
-  };
-
-  const removeStoreState = async () => {
-    await AsyncStorage.removeItem("userToken");
-    await AsyncStorage.removeItem("userExpired");
-    await AsyncStorage.removeItem("refreshToken");
-    await AsyncStorage.removeItem("USER_ID");
-    await AsyncStorage.removeItem("fcmToken");
   };
 
   return (
@@ -66,8 +57,6 @@ const styles = StyleSheet.create({
   container: {
     ...GLOBAL_STYLES.flexCenter,
     backgroundColor: COLORS.white,
-    height: "100%",
-    width: "100%",
   },
   icon: {
     height: 25,

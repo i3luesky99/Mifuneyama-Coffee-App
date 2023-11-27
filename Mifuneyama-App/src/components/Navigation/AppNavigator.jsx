@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import {
   BottomWelcome,
   HomeTab,
+  NewDetail,
   ProductDetail,
   ProductMenu,
 } from "../../screens";
@@ -29,6 +30,7 @@ export default function AppNavigator() {
         <Stack.Screen name="HomeTab" component={HomeTab} />
         <Stack.Screen name="ProductMenu" component={ProductMenu} />
         <Stack.Screen name="ProductDetail" component={ProductDetail} />
+        <Stack.Screen name="NewDetail" component={NewDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -9,7 +9,7 @@ import {
 } from "../../../assets/images";
 import { COLORS, ios, SIZES } from "../../themes";
 import Home from "../../screens/Home/Home";
-import { History, Notification, Profile } from "../../screens";
+import { History, News, Profile } from "../../screens";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -32,7 +32,7 @@ export default function HomeTab() {
     {
       id: 3,
       title: "Thông báo",
-      component: Notification,
+      component: News,
       icon: <NotificationIcon style={styles.icon} fill={COLORS.grey} />,
       iconFill: <NotificationIcon style={styles.icon} fill={COLORS.yellow} />,
     },
