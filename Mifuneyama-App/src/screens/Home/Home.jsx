@@ -17,7 +17,7 @@ import BottomDrawer from "./components/BottomDrawer";
 
 export default function Home({ navigation }) {
   const HEADER_HEIGHT = 420; //Header
-  const HEIGHT_CONTENT = 580; //Content
+  const HEIGHT_CONTENT = 400; //Content
   const DOWN = 245; //Bottom
   const hours = moment.tz("Asia/Ho_Chi_Minh").format("HH");
   const greetingOpacity = new Animated.Value(0);

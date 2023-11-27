@@ -1,24 +1,22 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import {
   Menu,
   MenuOption,
   MenuOptions,
   MenuTrigger,
 } from "react-native-popup-menu";
-// import GoogleMap from './GoogleMap';
-
-import {
-  ios,
-  GLOBAL_STYLES,
-  SIZES,
-  COLORS,
-  SCREEN_PADDING,
-  WINDOW_HEIGHT,
-} from "../../../themes";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-// import { FetchAllShops } from "../../../apis/products";
+import { Modalize } from "react-native-modalize";
+import { WINDOW_HEIGHT } from "../../../themes/themes";
+import {
+  COLORS,
+  GLOBAL_STYLES,
+  ios,
+  SCREEN_PADDING,
+  SIZES,
+} from "../../../themes";
+
 function BottomDrawer(props) {
   const {
     navigation,
@@ -31,29 +29,28 @@ function BottomDrawer(props) {
     setLongitude,
     mainShop,
     setMainShop,
-    DOWN,
     setShopInfo,
     shopInfo,
   } = props;
+
   const shopName = "dsadsa";
-  const sheetRef = useRef(BottomSheet);
-  const [open, setOpen] = useState(true);
+  const modalizeRef = useRef(Modalize);
+
   const [shops, setShops] = useState();
   const [activeShop, setActiveShop] = useState(false);
   const UP = WINDOW_HEIGHT * 0.8;
 
-  const snapPoints = useMemo(() => [DOWN, UP], []);
+  const snapPoints = useMemo(() => [UP], [UP]);
 
   useEffect(() => {
-    async function fetchData() {
-
-    }
+    async function fetchData() {}
     fetchData();
   }, [shopID]);
 
   const handleOpenMap = () => {
-    setOpen(!open);
+    modalizeRef.current.open();
   };
+
   const setStateListInfoShop = (shop) => {
     setShopName(shop?.name);
     setMainShop(shop?.main_shop);
@@ -93,77 +90,58 @@ function BottomDrawer(props) {
         setLongitude(y);
         setActiveShop(true);
       }
+      modalizeRef.current.close();
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <>
-      {shops ? (
-        <BottomSheet
-          ref={sheetRef}
-          snapPoints={snapPoints}
-          handleIndicatorStyle={styles.indicator}
-          handleStyle={styles.handleStyle}
-          onChange={handleOpenMap}
-          style={styles.bottomSheet}
-        >
-          <BottomSheetView style={styles.bottomView}>
-            <View style={styles.bottom}>
-              <Text style={styles.bottomShopName}>MIFUNEYAMA COFFEE</Text>
-              <Menu>
-                <MenuTrigger>
-                  {mainShop === 1 ? (
-                    <Text style={styles.menuText}>{shopName}(本店)▼</Text>
+    <Modalize
+      ref={modalizeRef}
+      snapPoint={UP}
+      handlePosition="outside"
+      handleStyle={styles.indicator}
+      HeaderComponent={
+        <View style={styles.bottom}>
+          <Text style={styles.bottomShopName}>MIFUNEYAMA COFFEE</Text>
+          <Menu>
+            <MenuTrigger>
+              {mainShop === 1 ? (
+                <Text style={styles.menuText}>{shopName}(本店)▼</Text>
+              ) : (
+                <Text style={styles.menuText}>{shopName}▼</Text>
+              )}
+            </MenuTrigger>
+            <MenuOptions style={styles.menu}>
+              {shops?.map((shop, index) => (
+                <MenuOption key={index} onSelect={() => handleSelect(shop)}>
+                  {shop?.main_shop === 1 ? (
+                    <Text style={styles.menuText}>
+                      {shop?.name}
+                      (本店)
+                    </Text>
                   ) : (
-                    <Text style={styles.menuText}>{shopName}▼</Text>
+                    <Text style={styles.menuText}>{shop?.name}</Text>
                   )}
-                </MenuTrigger>
-                <MenuOptions style={styles.menu}>
-                  {shops?.map((shop, index) => (
-                    <MenuOption key={index} onSelect={() => handleSelect(shop)}>
-                      {shop?.main_shop === 1 ? (
-                        <Text style={styles.menuText}>
-                          {shop?.name}
-                          (本店)
-                        </Text>
-                      ) : (
-                        <Text style={styles.menuText}>{shop?.name}</Text>
-                      )}
-                    </MenuOption>
-                  ))}
-                </MenuOptions>
-              </Menu>
-              <Text style={styles.bottomText}>
-                ご来店前にメニュ一覧をご覧ください。
-              </Text>
-              <TouchableOpacity
-                style={styles.buttonMenu}
-                onPress={onHandleChangeToMenu}
-              >
-                <Text style={styles.textButton}>メニューを見る。</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.map}>
-              {/* <GoogleMap
-                latitude={Number(latitude)}
-                longitude={Number(longitude)}
-                latitudeDelta={0.0922}
-                longitudeDelta={0.0421}
-                activeShop={activeShop}
-                shops={shops}
-                shopID={shopID}
-                shopInfo={shopInfo}
-                navigation={navigation}
-              /> */}
-            </View>
-          </BottomSheetView>
-        </BottomSheet>
-      ) : (
-        <></>
-      )}
-    </>
+                </MenuOption>
+              ))}
+            </MenuOptions>
+          </Menu>
+          <Text style={styles.bottomText}>
+            ご来店前にメニュ一覧をご覧ください。
+          </Text>
+          <TouchableOpacity
+            style={styles.buttonMenu}
+            onPress={onHandleChangeToMenu}
+          >
+            <Text style={styles.textButton}>メニューを見る。</Text>
+          </TouchableOpacity>
+        </View>
+      }
+    >
+      <View style={styles.map}>{/* Your GoogleMap component */}</View>
+    </Modalize>
   );
 }
 

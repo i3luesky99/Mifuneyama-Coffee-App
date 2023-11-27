@@ -1,12 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
-import {
-  COLORS,
-  GLOBAL_STYLES,
-  ios,
-  SCREEN_PADDING,
-  SIZES,
-} from "../../../themes";
+import { COLORS, GLOBAL_STYLES, SCREEN_PADDING, SIZES } from "../../../themes";
 // import Popup from "../../../components/Popup";
 // import { useDispatch, useSelector } from "react-redux";
 // import BoxChat from "../../../components/BoxChat";
@@ -16,12 +10,8 @@ import BoxChat from "../../../components/BoxChat";
 
 function Content({ HEIGHT_CONTENT, navigation }) {
   //   const dispatch = useDispatch();
-  const handleOpenDialogQRcode = () => {
-    // dispatch(
-    //   openQRCodePopUp({
-    //     data: true,
-    //   })
-    // );
+  const handleOpenMenu = () => {
+    navigation.navigate("ProductMenu");
   };
   const handleOpenShopsDetail = () => {
     navigation.navigate("Shops");
@@ -48,10 +38,9 @@ function Content({ HEIGHT_CONTENT, navigation }) {
         <TouchableOpacity
           style={[
             styles.bottomButtonMiddleContent,
-            { backgroundColor: token ? COLORS.lightRed : COLORS.mediumGrey },
+            { backgroundColor: COLORS.lightRed },
           ]}
-          onPress={handleOpenDialogQRcode}
-          disabled={token ? false : true}
+          onPress={handleOpenMenu}
         >
           <Text style={styles.buttonText}>Cửa hàng (Các sản phẩm)</Text>
         </TouchableOpacity>

@@ -114,3 +114,11 @@ export const [screen_width_small, screen_width_medium, screen_width_large] = [
 ];
 
 export { getLocationMarker, onSwipe };
+
+export const formatCurrencyVND = (amount) => {
+  const formatter = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  });
+  return formatter.format(amount);
+};

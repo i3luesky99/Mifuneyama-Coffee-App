@@ -54,7 +54,9 @@ function ProductMenu({ navigation }) {
       category_name: "Tiệm 1",
       type: 1,
       price: "100000",
+      kind: "100",
       path: require("../../../assets/images/picture/product_1.png"),
+      is_sold: true,
     },
     {
       id: 2,
@@ -63,6 +65,7 @@ function ProductMenu({ navigation }) {
       category_name: "Tiệm 2",
       type: 2,
       price: "20000",
+      kind: "100",
       path: require("../../../assets/images/picture/product_2.png"),
     },
     {
@@ -72,16 +75,19 @@ function ProductMenu({ navigation }) {
       category_name: "Tiệm 1",
       type: 1,
       price: "100000",
+      kind: "100",
       path: require("../../../assets/images/picture/product_3.png"),
     },
     {
       id: 21,
       category_id: 1,
       name: "Cafe2",
-      category_name: "Tiệm 2",
+      category_name: "Tiệm 1",
       type: 2,
       price: "20000",
       path: require("../../../assets/images/picture/product_4.png"),
+      kind: "100",
+      is_sold: true,
     },
     {
       id: 3,
@@ -91,23 +97,27 @@ function ProductMenu({ navigation }) {
       type: 2,
       price: "100000",
       path: require("../../../assets/images/picture/product_2.png"),
+      kind: "200",
     },
     {
       id: 4,
       category_id: 2,
       name: "Cafe4",
-      category_name: "Tiệm 1",
+      category_name: "Tiệm 2",
       price: "100000",
       type: 2,
       path: require("../../../assets/images/picture/product_1.png"),
+      kind: "300",
     },
     {
       id: 5,
       category_id: 3,
       name: "Cafe5",
-      category_name: "Tiệm 1",
+      category_name: "Tiệm 3",
       type: 1,
       price: "100000",
+      kind: "500",
+      is_sold: true,
     },
     {
       id: 6,
@@ -116,6 +126,7 @@ function ProductMenu({ navigation }) {
       category_name: "Tiệm 1",
       price: "100000",
       type: 2,
+      kind: "400",
     },
     {
       id: 7,
@@ -124,6 +135,8 @@ function ProductMenu({ navigation }) {
       category_name: "Tiệm 1",
       price: "100000",
       type: 1,
+      kind: "100",
+      is_sold: true,
     },
     {
       id: 8,
@@ -132,6 +145,7 @@ function ProductMenu({ navigation }) {
       category_name: "Tiệm 1",
       price: "100000",
       type: 2,
+      kind: "100",
     },
   ];
 

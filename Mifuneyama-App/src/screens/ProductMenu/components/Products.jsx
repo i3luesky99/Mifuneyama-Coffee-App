@@ -7,32 +7,14 @@ import {
   WINDOW_HEIGHT,
   screen_width_large,
   screen_width_medium,
+  formatCurrencyVND,
 } from "../../../themes/themes";
 
 const Products = ({ navigation, arr_products_sort_by_category_id, images }) => {
-  const onHandleChangToCategoryDetail = (id) => {
-    navigation.navigate("ProductDetail", { id: id });
+  const onHandleChangToCategoryDetail = (product) => {
+    navigation.navigate("ProductDetail", { product: product });
   };
 
-  let SIZE_IMAGE = 0;
-  switch (true) {
-    case screen_width_medium:
-      SIZE_IMAGE = 163;
-      break;
-    case screen_width_large:
-      SIZE_IMAGE = 175;
-      break;
-    default:
-      SIZE_IMAGE = 155;
-  }
-  const formatCurrencyVND = (amount) => {
-    const formatter = new Intl.NumberFormat("vi-VN", {
-      style: "currency",
-      currency: "VND",
-    });
-
-    return formatter.format(amount);
-  };
   return (
     <View style={{ flex: 1 }}>
       {arr_products_sort_by_category_id?.length > 0 ? (
@@ -40,9 +22,7 @@ const Products = ({ navigation, arr_products_sort_by_category_id, images }) => {
           {arr_products_sort_by_category_id?.map((product, indexProducts) => (
             <View key={`${indexProducts}-products`}>
               <TouchableOpacity
-                onPress={() =>
-                  onHandleChangToCategoryDetail(product?.product_price.item_id)
-                }
+                onPress={() => onHandleChangToCategoryDetail(product)}
                 style={[
                   styles.product,
                   {
@@ -63,8 +43,14 @@ const Products = ({ navigation, arr_products_sort_by_category_id, images }) => {
                   </Text>
                   <Text style={styles.productSource}>{product?.name}</Text>
                   <View style={styles.weightGuild}>
-                    <Text style={styles.productWeight}>{product?.kind}</Text>
-                    <Text style={styles.productGuild}>{product?.kowadori}</Text>
+                    <Text style={styles.productWeight}>{product?.kind}g</Text>
+                    {product?.is_sold && (
+                      <Text
+                        style={[styles.productGuild, { color: COLORS.red }]}
+                      >
+                        HẾT HÀNG
+                      </Text>
+                    )}
                   </View>
                   <View
                     style={[
@@ -151,7 +137,7 @@ const styles = StyleSheet.create({
   },
   productType: {
     height: 20,
-    width: 60,
+    width: 80,
     ...GLOBAL_STYLES.flexCenter,
     borderRadius: SIZES.base - 2,
     marginBottom: 5,
