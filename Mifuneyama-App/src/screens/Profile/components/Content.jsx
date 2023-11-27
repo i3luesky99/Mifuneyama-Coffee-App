@@ -92,13 +92,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 20,
     top: 15,
+    alignItems: "center",
   },
   bottomMiddleContentText: {
     fontFamily: "NotoSansCJKjp-Regular",
     fontWeight: "600",
     letterSpacing: 2,
     marginLeft: 8,
-    marginTop: 5,
   },
   boxCoupon: {
     backgroundColor: COLORS.yellowLightest,

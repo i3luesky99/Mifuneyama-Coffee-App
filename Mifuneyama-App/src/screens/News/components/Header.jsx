@@ -9,6 +9,7 @@ import {
 import React from "react";
 import { COLORS, GLOBAL_STYLES, ios } from "../../../themes";
 import Icon from "./Icon";
+import { scrollToTopFunction } from "../../../themes/themes";
 
 function Header({
   animatedValue,
@@ -17,7 +18,7 @@ function Header({
   setCategoryName,
   categoryList,
 }) {
-  const height = 160;
+  const height = 130;
   const headerAnimation = ({ height, heightOutput, paddingTop }) => {
     return {
       height: animatedValue.interpolate({
@@ -51,6 +52,7 @@ function Header({
   const onHandleToChangeCategoryID = (id, category_name) => {
     setCategoryID(id);
     setCategoryName(category_name);
+    scrollToTopFunction(animatedValue);
   };
   const renderCategories = ({ item, index }) => {
     return (

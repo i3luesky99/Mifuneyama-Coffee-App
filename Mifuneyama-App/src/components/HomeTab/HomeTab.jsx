@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 15,
     bottom: 10,
     elevation: 0,
-    height: ios ? 80 : 75,
+    height: 80,
     left: 0,
     marginBottom: -15,
     position: "absolute",

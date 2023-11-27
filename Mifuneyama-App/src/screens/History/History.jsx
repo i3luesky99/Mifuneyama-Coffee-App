@@ -47,49 +47,49 @@ function History({ navigation }) {
       path: require("../../../assets/images/picture/product_3.png"),
       created_at: "11/06/2023",
     },
-    // {
-    //   id: 6,
-    //   category_id: 1,
-    //   name: "Cafe6",
-    //   category_name: "Tiệm 1",
-    //   price: "100000",
-    //   type: 2,
-    //   kind: "400",
-    //   created_at: "11/06/2023",
-    // },
-    // {
-    //   id: 7,
-    //   category_id: 1,
-    //   name: "Cafe7",
-    //   category_name: "Tiệm 1",
-    //   price: "100000",
-    //   type: 1,
-    //   kind: "100",
-    //   is_sold: true,
-    //   created_at: "11/06/2023",
-    // },
-    // {
-    //   id: 8,
-    //   category_id: 1,
-    //   name: "Cafe8",
-    //   category_name: "Tiệm 1",
-    //   price: "100000",
-    //   type: 2,
-    //   kind: "100",
-    //   created_at: "01/02/2022",
-    // },
+    {
+      id: 6,
+      category_id: 1,
+      name: "Cafe6",
+      category_name: "Tiệm 1",
+      price: "100000",
+      type: 2,
+      kind: "400",
+      created_at: "11/06/2023",
+    },
+    {
+      id: 7,
+      category_id: 1,
+      name: "Cafe7",
+      category_name: "Tiệm 1",
+      price: "100000",
+      type: 1,
+      kind: "100",
+      is_sold: true,
+      created_at: "11/06/2023",
+    },
+    {
+      id: 8,
+      category_id: 1,
+      name: "Cafe8",
+      category_name: "Tiệm 1",
+      price: "100000",
+      type: 2,
+      kind: "100",
+      created_at: "01/02/2022",
+    },
   ];
   useScrollToTop(animatedValue);
 
   return (
     <View style={styles.container}>
       <View style={styles.list}>
+        <Header title={title} height={height} />
         <ScrollView
           showsVerticalScrollIndicator={false}
           ref={animatedValue}
           scrollEventThrottle={16}
         >
-          <Header title={title} height={height} />
           <>
             {orders.length > 0 ? (
               <View>
@@ -133,8 +133,8 @@ const styles = StyleSheet.create({
     marginTop: 35,
   },
   list: {
-    flex: 1,
-    paddingBottom: 100,
+    height: WINDOW_HEIGHT,
+    paddingBottom: 80,
   },
   noContent: {
     height: WINDOW_HEIGHT - 110 - 80,

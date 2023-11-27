@@ -7,3 +7,4 @@ export { default as CancelIcon } from "./svg/cancel";
 export { default as LogoutIcon } from "./svg/logout";
 export { default as GuestIcon } from "./svg/guest";
 export { default as AddProfileImageIcon } from "./svg/addProfile";
+export { default as NextIcon } from "./svg/next";

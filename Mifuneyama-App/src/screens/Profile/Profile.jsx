@@ -4,11 +4,13 @@ import { COLORS, GLOBAL_STYLES, scrollToTopFunction } from "../../themes";
 import { WINDOW_HEIGHT, WINDOW_WIDTH } from "../../themes/themes";
 import Header from "./components/Header";
 import Content from "./components/Content";
-// import PrivacyPolicy from "./components/PrivacyPolicy";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import { useScrollToTop } from "@react-navigation/native";
 
 function Profile({ navigation }) {
   const [imageAvatar, setImageAvatar] = useState();
   const animatedValue = useRef(new Animated.Value(0)).current;
+  useScrollToTop(animatedValue);
 
   const fetchUserInfo = async () => {};
   useEffect(() => {
@@ -30,10 +32,10 @@ function Profile({ navigation }) {
           setImageAvatar={setImageAvatar}
         />
         <Content navigation={navigation} />
-        {/* <PrivacyPolicy
+        <PrivacyPolicy
           navigation={navigation}
           setImageAvatar={setImageAvatar}
-        /> */}
+        />
       </ScrollView>
     </View>
   );
@@ -41,7 +43,7 @@ function Profile({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.white,
-    flex: 1,
+    height: WINDOW_HEIGHT,
   },
   content: {
     height: WINDOW_HEIGHT,

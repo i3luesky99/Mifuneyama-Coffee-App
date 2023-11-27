@@ -1,30 +1,27 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import {
-  colors,
-  globalStyles,
+  COLORS,
+  GLOBAL_STYLES,
   ios,
-  screenPadding,
+  SCREEN_PADDING,
   SIZES,
 } from "../../../themes";
-import { NextIcon } from "../../../assets/images/svg";
 import { TouchableOpacity } from "react-native";
-import { LogoutApi } from "../../../apis/auth";
-import { useDispatch, useSelector } from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { NextIcon } from "../../../../assets/images";
 
 function PrivacyPolicy({ navigation, setImageAvatar }) {
   const arrPrivacy = [
-    { text: "購入履歷", icon: true },
+    { text: "Lịch sử mua hàng", icon: true },
     { text: "", icon: false },
-    { text: "利用規約", icon: true },
-    { text: "プライバシーポリシー", icon: true },
-    { text: "特定商取引法に基づく表記", icon: true },
+    { text: "Điều khoản", icon: true },
+    { text: "Chính sách bảo mật", icon: true },
+    { text: "Mô tả giao dịch", icon: true },
   ];
-  const { token } = useSelector((user) => user.user);
-  const dispatch = useDispatch();
+  const { token } = {};
   const changeToAnotherScreen = (index) => {
-    index === 0 && navigation.navigate("HomeTab", { screen: "購入履歴" }); // History Screen
+    index === 0 && navigation.navigate("HomeTab", { screen: "Lịch sử" }); // History Screen
   };
 
   const handleLogOut = async () => {};
@@ -46,7 +43,7 @@ function PrivacyPolicy({ navigation, setImageAvatar }) {
         >
           <Text style={styles.text}>{privacy.text}</Text>
           {privacy.icon && (
-            <NextIcon style={styles.iconNext} fill={colors.mediumGrey} />
+            <NextIcon style={styles.iconNext} fill={COLORS.mediumGrey} />
           )}
         </TouchableOpacity>
       ))}
@@ -79,17 +76,17 @@ const styles = StyleSheet.create({
   },
   box: {
     borderBottomWidth: 1.5,
-    borderColor: colors.normalGrey,
+    borderColor: COLORS.normalGrey,
     height: 70,
     width: "100%",
-    ...screenPadding,
-    ...globalStyles.flexRowCenterBetween,
+    ...SCREEN_PADDING,
+    ...GLOBAL_STYLES.flexRowCenterBetween,
   },
   button: {
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
     height: 40,
-    ...globalStyles.flexCenter,
-    borderColor: colors.lightRed,
+    ...GLOBAL_STYLES.flexCenter,
+    borderColor: COLORS.lightRed,
     borderRadius: 10,
     borderWidth: 1,
     width: 250,
@@ -102,18 +99,18 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   text: {
-    color: colors.blackest,
+    color: COLORS.blackest,
     fontFamily: "NotoSansCJKjp-Regular",
     fontSize: SIZES.font,
     letterSpacing: 2,
   },
   textBottom: {
-    color: colors.blackest,
+    color: COLORS.blackest,
     fontSize: SIZES.medium,
     marginTop: 30,
   },
   textButton: {
-    color: colors.lightRed,
+    color: COLORS.lightRed,
     fontFamily: ios ? "NotoSansCJKjp-Regular" : "Hiragino-Gothic4",
     textAlign: "center",
   },

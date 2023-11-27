@@ -2,7 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { COLORS, GLOBAL_STYLES, SIZES } from "../../../themes";
 import ImageNew from "./ImageNew";
-import { WINDOW_HEIGHT } from "../../../themes/themes";
+import { WINDOW_HEIGHT, WINDOW_WIDTH } from "../../../themes/themes";
 
 function Content(props) {
   const { navigation, arr_news_sort_by_category_id } = props;
@@ -57,7 +57,8 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   container: {
-    flex: 1,
+    // flex: 1,
+    height: 300,
   },
 
   noDataText: {
