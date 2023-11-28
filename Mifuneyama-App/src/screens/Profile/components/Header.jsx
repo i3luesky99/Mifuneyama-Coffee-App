@@ -1,28 +1,35 @@
-import React, { useEffect, useRef } from "react";
-import { Image } from "react-native";
+import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { COLORS, GLOBAL_STYLES, SIZES } from "../../../themes";
+import { COLORS, GLOBAL_STYLES, SIZES, SCREEN_PADDING } from "../../../themes";
 import Avatar from "../../../components/Picture/Avatar";
 import ProfileImage from "../../../components/Picture/ProfileImage";
+import { WINDOW_WIDTH } from "../../../themes/themes";
+
 // import ImagePicker from "react-native-image-crop-picker";
 // import ProfileImage from "../../../components/Picture/ProfileImage";
 
-function Header({ imageAvatar, setImageAvatar }) {
+function Header({ imageAvatar, setOpenRegister, openRegister }) {
   const { user, token } = {};
-  const refRBSheet = useRef();
+
   const size = {
     width: 80,
     height: 80,
   };
+
   const fullName = user?.first_name
     ? user?.last_name + " " + user?.first_name
     : "Khách";
 
   const customerName = user?.nick_name || fullName;
 
-  useEffect(() => {}, []);
+  const onCloseDialog = () => {
+    setOpenRegister(false);
+  };
 
-  const handleOpenPopUpRegister = () => {};
+  const handleOpenPopUpRegister = () => {
+    console.log(123);
+    setOpenRegister(!openRegister);
+  };
 
   const onPickImage = () => {
     // ImagePicker.openPicker({
@@ -60,7 +67,6 @@ function Header({ imageAvatar, setImageAvatar }) {
         onPickImage={onPickImage}
         size={size}
         profile={true}
-        refRBSheet={refRBSheet}
       />
     </View>
   );

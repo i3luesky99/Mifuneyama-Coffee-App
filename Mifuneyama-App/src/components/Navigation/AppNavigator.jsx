@@ -7,6 +7,7 @@ import {
   NewDetail,
   ProductDetail,
   ProductMenu,
+  Register,
 } from "../../screens";
 import { StatusBar } from "react-native";
 
@@ -31,6 +32,7 @@ export default function AppNavigator() {
         <Stack.Screen name="ProductMenu" component={ProductMenu} />
         <Stack.Screen name="ProductDetail" component={ProductDetail} />
         <Stack.Screen name="NewDetail" component={NewDetail} />
+        <Stack.Screen name="Register" component={Register} />
       </Stack.Navigator>
     </NavigationContainer>
   );
