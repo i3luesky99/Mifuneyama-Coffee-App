@@ -10,3 +10,4 @@ export { default as HomeTab } from "../components/HomeTab/HomeTab";
 export { default as ProductMenu } from "./ProductMenu/ProductMenu";
 export { default as ProductDetail } from "./ProductDetail/ProductDetail";
 export { default as Register } from "./Register/Register";
+export { default as Login } from "./Login/Login";

@@ -8,7 +8,7 @@ import { WINDOW_WIDTH } from "../../../themes/themes";
 // import ImagePicker from "react-native-image-crop-picker";
 // import ProfileImage from "../../../components/Picture/ProfileImage";
 
-function Header({ imageAvatar, setOpenRegister, openRegister }) {
+function Header({ imageAvatar, navigation }) {
   const { user, token } = {};
 
   const size = {
@@ -22,32 +22,12 @@ function Header({ imageAvatar, setOpenRegister, openRegister }) {
 
   const customerName = user?.nick_name || fullName;
 
-  const onCloseDialog = () => {
-    setOpenRegister(false);
+  const handleOpenRegister = () => {
+    navigation.navigate("Register");
   };
 
-  const handleOpenPopUpRegister = () => {
-    console.log(123);
-    setOpenRegister(!openRegister);
-  };
-
-  const onPickImage = () => {
-    // ImagePicker.openPicker({
-    //   width: 400,
-    //   height: 400,
-    //   cropping: true,
-    // })
-    //   .then((image) => {
-    //     setImageAvatar(image);
-    //     updateAvatar(image, "avatar");
-    //   })
-    //   .catch((error) => {
-    //     if (error.code !== "E_PICKER_CANCELLED") {
-    //       refRBSheet.current.close();
-    //     } else {
-    //       return;
-    //     }
-    //   });
+  const handleOpenLogin = () => {
+    navigation.navigate("Login");
   };
 
   return (
@@ -55,32 +35,44 @@ function Header({ imageAvatar, setOpenRegister, openRegister }) {
       <ProfileImage />
       <Text style={styles.name}>{customerName}</Text>
       {!token && (
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleOpenPopUpRegister}
-        >
-          <Text style={styles.buttonText}>Đăng ký</Text>
-        </TouchableOpacity>
+        <View style={styles.buttonGroup}>
+          <TouchableOpacity
+            style={[styles.button, { borderRightWidth: 2 }]}
+            onPress={handleOpenRegister}
+          >
+            <Text style={styles.buttonText}>Đăng ký</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, { borderLeftWidth: 2 }]}
+            onPress={handleOpenLogin}
+          >
+            <Text style={styles.buttonText}>Đăng nhập</Text>
+          </TouchableOpacity>
+        </View>
       )}
-      <Avatar
-        image={imageAvatar}
-        onPickImage={onPickImage}
-        size={size}
-        profile={true}
-      />
+      <Avatar image={imageAvatar} size={size} profile={true} />
     </View>
   );
 }
 const styles = StyleSheet.create({
-  button: {
+  buttonGroup: {
     backgroundColor: COLORS.lightRed,
     bottom: -70,
     height: 40,
     position: "absolute",
     right: 15,
-    ...GLOBAL_STYLES.flexCenter,
     borderRadius: 20,
-    width: 120,
+    width: 190,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
+    alignItems: "center",
+  },
+  button: {
+    flex: 1,
+    height: 40,
+    borderColor: COLORS.white,
+    ...GLOBAL_STYLES.flexCenter,
   },
   buttonText: {
     color: COLORS.white,
