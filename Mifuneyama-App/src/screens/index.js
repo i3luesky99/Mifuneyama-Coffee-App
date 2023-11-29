@@ -14,3 +14,4 @@ export { default as Login } from "./Login/Login";
 export { default as ConfirmEmail } from "./Register/screens/ConfirmEmail";
 export { default as CreateAccount } from "./Register/screens/CreateAccount";
 export { default as CreateAccountNext } from "./Register/screens/CreateAccountNext";
+export { default as PersonalSetting } from "./PersonalSetting/PersonalSetting";
