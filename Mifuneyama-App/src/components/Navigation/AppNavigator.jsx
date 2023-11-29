@@ -9,6 +9,7 @@ import {
   HomeTab,
   Login,
   NewDetail,
+  PersonalSetting,
   ProductDetail,
   ProductMenu,
   Register,
@@ -53,7 +54,7 @@ export default function AppNavigator() {
           headerShown: false,
         }}
         // initialRouteName={token ? "HomeTab" : "BottomWelcome"}
-        initialRouteName={"CreateAccountNext"}
+        initialRouteName={"PersonalSetting"}
       >
         <Stack.Screen name="BottomWelcome" component={BottomWelcome} />
         <Stack.Screen name="HomeTab" component={HomeTab} />
@@ -64,6 +65,7 @@ export default function AppNavigator() {
         <Stack.Screen name="ConfirmEmail" component={ConfirmEmail} />
         <Stack.Screen name="CreateAccount" component={CreateAccount} />
         <Stack.Screen name="CreateAccountNext" component={CreateAccountNext} />
+        <Stack.Screen name="PersonalSetting" component={PersonalSetting} />
         <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
     </NavigationContainer>
