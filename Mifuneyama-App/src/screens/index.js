@@ -11,3 +11,6 @@ export { default as ProductMenu } from "./ProductMenu/ProductMenu";
 export { default as ProductDetail } from "./ProductDetail/ProductDetail";
 export { default as Register } from "./Register/Register";
 export { default as Login } from "./Login/Login";
+export { default as ConfirmEmail } from "./Register/screens/ConfirmEmail";
+export { default as CreateAccount } from "./Register/screens/CreateAccount";
+export { default as CreateAccountNext } from "./Register/screens/CreateAccountNext";

@@ -3,6 +3,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import {
   BottomWelcome,
+  ConfirmEmail,
+  CreateAccount,
+  CreateAccountNext,
   HomeTab,
   Login,
   NewDetail,
@@ -49,7 +52,8 @@ export default function AppNavigator() {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={token ? "HomeTab" : "BottomWelcome"}
+        // initialRouteName={token ? "HomeTab" : "BottomWelcome"}
+        initialRouteName={"CreateAccountNext"}
       >
         <Stack.Screen name="BottomWelcome" component={BottomWelcome} />
         <Stack.Screen name="HomeTab" component={HomeTab} />
@@ -57,6 +61,9 @@ export default function AppNavigator() {
         <Stack.Screen name="ProductDetail" component={ProductDetail} />
         <Stack.Screen name="NewDetail" component={NewDetail} />
         <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="ConfirmEmail" component={ConfirmEmail} />
+        <Stack.Screen name="CreateAccount" component={CreateAccount} />
+        <Stack.Screen name="CreateAccountNext" component={CreateAccountNext} />
         <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
     </NavigationContainer>
