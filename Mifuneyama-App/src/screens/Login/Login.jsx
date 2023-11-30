@@ -17,20 +17,13 @@ import {
 import { TouchableWithoutFeedback } from "react-native";
 import { ScrollView } from "react-native";
 import { LoginIcon } from "../../../assets/images";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { saveObjectToStorage } from "../../themes/themes";
 
 function Login({ navigation }) {
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const [warning, setWarning] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const storeState = async (USER_ID, TOKEN, USER_NAME, USER_POINT) => {
-    await AsyncStorage.setItem("userID", USER_ID);
-    await AsyncStorage.setItem("userToken", TOKEN);
-    await AsyncStorage.setItem("userName", USER_NAME);
-    await AsyncStorage.setItem("userPoint", USER_POINT);
-  };
 
   const onHandleLogin = async () => {
     // setLoading(true);
@@ -47,8 +40,7 @@ function Login({ navigation }) {
         userName: "Hieu Nguyen",
         userPoint: 10,
       };
-      await storeState(user.id, user.token, user.userName, user.userPoint);
-
+      saveObjectToStorage("USER_DETAIL", user);
       initState();
       setLoading(false);
     } catch (error) {

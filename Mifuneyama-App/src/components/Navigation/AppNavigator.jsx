@@ -15,18 +15,22 @@ import {
   Register,
 } from "../../screens";
 import { StatusBar } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getObjectFromStorage } from "../../themes/themes";
+import { useDispatch } from "react-redux";
+import { setUserDetail } from "../../store/userSlice";
 
 const Stack = createStackNavigator();
 
 export default function AppNavigator() {
   const [token, setToken] = useState();
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
   const configAuth = async () => {
     try {
-      const TOKEN = await AsyncStorage.getItem("userToken");
-      setToken(TOKEN);
+      const userDetail = await getObjectFromStorage("USER_DETAIL");
+      dispatch(setUserDetail(userDetail));
+      setToken(userDetail);
     } catch (error) {
       console.error("Error fetching token:", error);
     } finally {
@@ -53,8 +57,8 @@ export default function AppNavigator() {
         screenOptions={{
           headerShown: false,
         }}
-        // initialRouteName={token ? "HomeTab" : "BottomWelcome"}
-        initialRouteName={"PersonalSetting"}
+        initialRouteName={token ? "HomeTab" : "BottomWelcome"}
+        // initialRouteName={"PersonalSetting"}
       >
         <Stack.Screen name="BottomWelcome" component={BottomWelcome} />
         <Stack.Screen name="HomeTab" component={HomeTab} />

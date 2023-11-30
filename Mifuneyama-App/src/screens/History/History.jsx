@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Animated, ScrollView, StyleSheet, View } from "react-native";
 import Header from "../../components/Header";
 import { useScrollToTop } from "@react-navigation/native";
@@ -7,7 +7,12 @@ import Content from "./components/Content";
 import Products from "./components/Products";
 import { useRef } from "react";
 import { Text } from "react-native";
-import { WINDOW_HEIGHT, WINDOW_WIDTH } from "../../themes/themes";
+import {
+  getObjectFromStorage,
+  WINDOW_HEIGHT,
+  WINDOW_WIDTH,
+} from "../../themes/themes";
+import { useSelector } from "react-redux";
 
 function History({ navigation }) {
   const title = "# Lịch sử mua hàng";
@@ -80,6 +85,8 @@ function History({ navigation }) {
     },
   ];
   useScrollToTop(animatedValue);
+  const userDetail = useSelector((state) => state.user);
+  const token = userDetail.token;
 
   return (
     <View style={styles.container}>
@@ -91,13 +98,10 @@ function History({ navigation }) {
           scrollEventThrottle={16}
         >
           <>
-            {orders.length > 0 ? (
+            {orders.length > 0 && token ? (
               <View>
                 {orders?.map((item, index) => (
-                  <View
-                    key={index}
-                    style={[styles.content, index !== 0 && { marginTop: 20 }]}
-                  >
+                  <View key={index} style={index !== 0 && { marginTop: 20 }}>
                     <View style={{ ...SCREEN_PADDING }}>
                       <Content item={item} />
                       <Products item={item} navigation={navigation} />
@@ -108,7 +112,7 @@ function History({ navigation }) {
               </View>
             ) : (
               <View style={styles.noContent}>
-                <Text>結果が見つかりませんでした。</Text>
+                <Text>Không có kết quả nào được tìm thấy.</Text>
               </View>
             )}
           </>

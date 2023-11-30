@@ -3,8 +3,11 @@ import { StyleSheet, View } from "react-native";
 import { ActivityIndicator } from "react-native";
 import AppNavigator from "./src/components/Navigation/AppNavigator";
 import { COLORS, GLOBAL_STYLES } from "./src/themes";
-import * as SplashScreen from 'expo-splash-screen';
+import * as SplashScreen from "expo-splash-screen";
 import { useCallback } from "react";
+import { Provider } from "react-redux";
+import store from "./src/store/store";
+
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
@@ -40,9 +43,11 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <AppNavigator />
-    </View>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <AppNavigator />
+      </View>
+    </Provider>
   );
 }
 

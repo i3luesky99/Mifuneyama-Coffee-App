@@ -1,4 +1,5 @@
 import { Dimensions } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const { width: WINDOW_WIDTH, height: WINDOW_HEIGHT } =
   Dimensions.get("window");
@@ -121,4 +122,22 @@ export const formatCurrencyVND = (amount) => {
     currency: "VND",
   });
   return formatter.format(amount);
+};
+
+export const saveObjectToStorage = async (key, value) => {
+  try {
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem(key, jsonValue);
+  } catch (error) {
+    console.error("Error saving object to AsyncStorage:", error);
+  }
+};
+
+export const getObjectFromStorage = async (key) => {
+  try {
+    const jsonValue = await AsyncStorage.getItem(key);
+    return jsonValue != null ? JSON.parse(jsonValue) : null;
+  } catch (error) {
+    console.error("Error retrieving object from AsyncStorage:", error);
+  }
 };
