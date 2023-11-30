@@ -86,7 +86,7 @@ function History({ navigation }) {
   ];
   useScrollToTop(animatedValue);
   const userDetail = useSelector((state) => state.user);
-  const token = userDetail.token;
+  const token = userDetail?.token;
 
   return (
     <View style={styles.container}>

@@ -14,6 +14,7 @@ import moment from "moment/moment";
 import "moment-timezone";
 import Content from "./components/Content";
 import BottomDrawer from "./components/BottomDrawer";
+import CartShop from "../../components/CartShop";
 
 export default function Home({ navigation }) {
   const HEADER_HEIGHT = 420; //Header
@@ -49,6 +50,7 @@ export default function Home({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <CartShop />
       <ScrollView
         style={{ ...SCREEN_PADDING }}
         showsVerticalScrollIndicator={false}

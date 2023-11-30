@@ -14,49 +14,47 @@ function Content({ title, product }) {
   const comments = product?.comment ? product?.comment?.split("\n") : [];
 
   return (
-    <View style={{ flex: 1 }}>
-      <Animated.View style={[styles.content]}>
-        <View style={styles.contentView}>
-          <Text style={styles.title}>{title}</Text>
-          <View>
-            <Text style={styles.productName}>{product?.category_name}</Text>
-            <Text style={styles.productSource}>{product.name}</Text>
-          </View>
-          <View style={styles.weightGuild}>
-            <Text style={styles.productWeight}>{product?.kind}g</Text>
-            {product?.is_sold && (
-              <Text style={[styles.productGuild, { color: COLORS.red }]}>
-                HẾT HÀNG
-              </Text>
-            )}
-          </View>
-          <View
-            style={[
-              styles.productType,
-              {
-                backgroundColor:
-                  product?.type === 2 ? COLORS.normalBrown : COLORS.whiteBrown,
-              },
-            ]}
-          >
-            {product?.type === 2 ? (
-              <Text style={styles.productText}>THƯỜNG</Text>
-            ) : (
-              <Text style={styles.productText}>CAO CẤP</Text>
-            )}
-          </View>
+    <View style={[styles.content]}>
+      <View style={styles.contentView}>
+        <Text style={styles.title}>{title}</Text>
+        <View>
+          <Text style={styles.productName}>{product?.category_name}</Text>
+          <Text style={styles.productSource}>{product.name}</Text>
         </View>
-        <>
-          {comments?.map((comment, index) => (
-            <View key={index}>
-              <Text style={styles.productDescription}>{comment}</Text>
-            </View>
-          ))}
-        </>
-        <Text style={styles.productPrice}>
-          {formatCurrencyVND(product.price)}
-        </Text>
-      </Animated.View>
+        <View style={styles.weightGuild}>
+          <Text style={styles.productWeight}>{product?.kind}g</Text>
+          {product?.is_sold && (
+            <Text style={[styles.productGuild, { color: COLORS.red }]}>
+              HẾT HÀNG
+            </Text>
+          )}
+        </View>
+        <View
+          style={[
+            styles.productType,
+            {
+              backgroundColor:
+                product?.type === 2 ? COLORS.normalBrown : COLORS.whiteBrown,
+            },
+          ]}
+        >
+          {product?.type === 2 ? (
+            <Text style={styles.productText}>THƯỜNG</Text>
+          ) : (
+            <Text style={styles.productText}>CAO CẤP</Text>
+          )}
+        </View>
+      </View>
+      <>
+        {comments?.map((comment, index) => (
+          <View key={index}>
+            <Text style={styles.productDescription}>{comment}</Text>
+          </View>
+        ))}
+      </>
+      <Text style={styles.productPrice}>
+        {formatCurrencyVND(product.price)}
+      </Text>
     </View>
   );
 }
@@ -90,7 +88,6 @@ const styles = StyleSheet.create({
     color: COLORS.normalBlack,
     fontSize: SIZES.extraLarge,
     fontWeight: "600",
-    marginBottom: 200,
     marginTop: 10,
   },
   productSource: {

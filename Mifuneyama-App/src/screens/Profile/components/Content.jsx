@@ -6,9 +6,9 @@ import { Image } from "react-native";
 // import HistoryPopup from "./HistoryPopup";
 import { WarningIcon } from "../../../../assets/images";
 
-function Content({ navigation }) {
-  const { user } = {};
-  const userPoint = user?.point || 0;
+function Content(props) {
+  const { userDetail, navigation } = props;
+  const userPoint = userDetail?.userPoint || 0;
   const handleChangeToCoupon = () => {
     navigation.navigate("Coupon");
   };
@@ -28,38 +28,37 @@ function Content({ navigation }) {
         <Text style={styles.boxUnit}>Bt</Text>
       </View>
       <View style={styles.bottom}>
-        {user && (
+        {userDetail && (
           <TouchableOpacity
             onPress={handleChangeToCoupon}
             style={styles.boxCoupon}
           >
             <View style={styles.boxCouponTop}>
-              <Text style={styles.textCouponTop}>クーポンコードは</Text>
-              <Text style={styles.textCouponTop}>ここから追加できます。</Text>
+              <Text style={styles.textCouponTop}>Mã phiếu giảm giá</Text>
             </View>
             <View style={styles.boxCouponGift}>
               <Image
                 style={styles.gift}
                 source={require("../../../../assets/images/picture/gift.png")}
               />
-              <Text style={styles.textCouponGift}>クーポン</Text>
+              <Text style={styles.textCouponGift}>Phiếu mua hàng</Text>
             </View>
           </TouchableOpacity>
         )}
 
         <TouchableOpacity
           style={styles.bottomMiddleContent}
-          disabled={user ? false : true}
+          disabled={userDetail ? false : true}
           onPress={openPopupHistory}
         >
           <WarningIcon
             style={styles.iconInformation}
-            fill={user ? COLORS.lightRed : COLORS.grey}
+            fill={userDetail ? COLORS.lightRed : COLORS.grey}
           />
           <Text
             style={[
               styles.bottomMiddleContentText,
-              { color: user ? COLORS.lightRed : COLORS.grey },
+              { color: userDetail ? COLORS.lightRed : COLORS.grey },
             ]}
           >
             Xem lịch sử điểm

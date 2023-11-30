@@ -15,12 +15,12 @@ function ImageAnimation(props) {
     navigation.goBack();
   };
   return (
-    <View style={{ flex: 1 }}>
+    <View>
       <Image
         style={{
           marginBottom: 25,
           width: WINDOW_WIDTH,
-          height: 450,
+          height: WINDOW_WIDTH,
           objectFit: "cover",
         }}
         source={path ? path : noImage}
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   iconHeader: {
     height: 25,
     position: "absolute",
-    right: 10,
+    left: 10,
     top: 45,
     width: 40,
   },

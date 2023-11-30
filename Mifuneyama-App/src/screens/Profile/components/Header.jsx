@@ -8,20 +8,17 @@ import { WINDOW_WIDTH } from "../../../themes/themes";
 // import ImagePicker from "react-native-image-crop-picker";
 // import ProfileImage from "../../../components/Picture/ProfileImage";
 
-function Header({ imageAvatar, navigation }) {
-  const { user, token } = {};
+function Header(props) {
+  const { userDetail, navigation } = props;
 
   const size = {
     width: 80,
     height: 80,
   };
 
-  const fullName = user?.first_name
-    ? user?.last_name + " " + user?.first_name
-    : "Khách";
-
-  const customerName = user?.nick_name || fullName;
-
+  const fullName = userDetail ? userDetail?.userName : "Khách";
+  const token = userDetail?.token;
+  const imageAvatar = "";
   const handleOpenRegister = () => {
     navigation.navigate("Register");
   };
@@ -33,7 +30,7 @@ function Header({ imageAvatar, navigation }) {
   return (
     <View>
       <ProfileImage />
-      <Text style={styles.name}>{customerName}</Text>
+      <Text style={styles.name}>{fullName}</Text>
       {!token && (
         <View style={styles.buttonGroup}>
           <TouchableOpacity

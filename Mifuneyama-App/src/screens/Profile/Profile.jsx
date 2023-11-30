@@ -6,21 +6,23 @@ import Header from "./components/Header";
 import Content from "./components/Content";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import { useScrollToTop } from "@react-navigation/native";
+import { useSelector } from "react-redux";
+import CartShop from "../../components/CartShop";
 
 function Profile({ navigation }) {
   const [imageAvatar, setImageAvatar] = useState();
   const animatedValue = useRef(new Animated.Value(0)).current;
   useScrollToTop(animatedValue);
+  const userDetail = useSelector((state) => state.user);
 
   const fetchUserInfo = async () => {};
   useEffect(() => {
     fetchUserInfo();
   }, []);
 
-  const saveUserInfo = (USER_DETAIL, TOKEN) => {};
-
   return (
     <View style={styles.container}>
+      <CartShop color={COLORS.lightRed} />
       <ScrollView
         ref={animatedValue}
         scrollEventThrottle={16}
@@ -30,11 +32,13 @@ function Profile({ navigation }) {
           navigation={navigation}
           imageAvatar={imageAvatar}
           setImageAvatar={setImageAvatar}
+          userDetail={userDetail}
         />
-        <Content navigation={navigation} />
+        <Content navigation={navigation} userDetail={userDetail} />
         <PrivacyPolicy
           navigation={navigation}
           setImageAvatar={setImageAvatar}
+          userDetail={userDetail}
         />
       </ScrollView>
     </View>
