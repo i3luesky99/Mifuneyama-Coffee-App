@@ -48,7 +48,7 @@ function ProductMenu({ navigation }) {
 
   const new_arr_product = [
     {
-      id: 1,
+      product_id: 1,
       category_id: 1,
       name: "Cafe1",
       category_name: "Tiệm 1",
@@ -59,7 +59,7 @@ function ProductMenu({ navigation }) {
       is_sold: true,
     },
     {
-      id: 2,
+      product_id: 2,
       category_id: 2,
       name: "Cafe2",
       category_name: "Tiệm 2",
@@ -69,7 +69,7 @@ function ProductMenu({ navigation }) {
       path: require("../../../assets/images/picture/product_2.png"),
     },
     {
-      id: 11,
+      product_id: 11,
       category_id: 1,
       name: "Cafe1",
       category_name: "Tiệm 1",
@@ -79,7 +79,7 @@ function ProductMenu({ navigation }) {
       path: require("../../../assets/images/picture/product_3.png"),
     },
     {
-      id: 21,
+      product_id: 21,
       category_id: 1,
       name: "Cafe2",
       category_name: "Tiệm 1",
@@ -90,7 +90,7 @@ function ProductMenu({ navigation }) {
       is_sold: true,
     },
     {
-      id: 3,
+      product_id: 3,
       category_id: 3,
       name: "Cafe3",
       category_name: "Tiệm 3",
@@ -100,7 +100,7 @@ function ProductMenu({ navigation }) {
       kind: "200",
     },
     {
-      id: 4,
+      product_id: 4,
       category_id: 2,
       name: "Cafe4",
       category_name: "Tiệm 2",
@@ -110,7 +110,7 @@ function ProductMenu({ navigation }) {
       kind: "300",
     },
     {
-      id: 5,
+      product_id: 5,
       category_id: 3,
       name: "Cafe5",
       category_name: "Tiệm 3",
@@ -120,7 +120,7 @@ function ProductMenu({ navigation }) {
       is_sold: true,
     },
     {
-      id: 6,
+      product_id: 6,
       category_id: 1,
       name: "Cafe6",
       category_name: "Tiệm 1",
@@ -129,7 +129,7 @@ function ProductMenu({ navigation }) {
       kind: "400",
     },
     {
-      id: 7,
+      product_id: 7,
       category_id: 1,
       name: "Cafe7",
       category_name: "Tiệm 1",
@@ -139,7 +139,7 @@ function ProductMenu({ navigation }) {
       is_sold: true,
     },
     {
-      id: 8,
+      product_id: 8,
       category_id: 1,
       name: "Cafe8",
       category_name: "Tiệm 1",

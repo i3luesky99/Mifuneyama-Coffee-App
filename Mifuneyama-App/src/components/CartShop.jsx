@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { CartIcon } from "../../assets/images";
 import { Text } from "react-native";
@@ -6,17 +6,20 @@ import { COLORS, GLOBAL_STYLES } from "../themes";
 import { useSelector } from "react-redux";
 
 const CartShop = (props) => {
-  const { color } = props;
+  const { color, navigation } = props;
   const cart = useSelector((state) => state.cart);
+  const handleToCartScreen = () => {
+    navigation.navigate("Cart");
+  };
   return (
-    <View style={styles.cart}>
+    <TouchableOpacity style={styles.cart} onPress={handleToCartScreen}>
       {cart.length > 0 && (
         <View style={styles.numberBox}>
           <Text style={styles.number}>{cart.length}</Text>
         </View>
       )}
       <CartIcon style={styles.icon} color={color ? color : COLORS.white} />
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -30,15 +33,15 @@ const styles = StyleSheet.create({
     right: 20,
   },
   icon: {
-    height: 40,
-    width: 40,
+    height: 30,
+    width: 30,
   },
   numberBox: {
     position: "absolute",
     top: -10,
     right: -5,
-    width: 25,
-    height: 25,
+    width: 20,
+    height: 20,
     borderRadius: 50,
     backgroundColor: COLORS.lightRed,
     ...GLOBAL_STYLES.flexCenter,
@@ -47,7 +50,7 @@ const styles = StyleSheet.create({
   },
   number: {
     color: COLORS.white,
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: "700",
   },
 });

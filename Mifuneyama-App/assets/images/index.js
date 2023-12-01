@@ -10,3 +10,4 @@ export { default as AddProfileImageIcon } from "./svg/addProfile";
 export { default as NextIcon } from "./svg/next";
 export { default as LoginIcon } from "./svg/login";
 export { default as CartIcon } from "./svg/cart";
+export { default as LocationIcon } from "./svg/location";

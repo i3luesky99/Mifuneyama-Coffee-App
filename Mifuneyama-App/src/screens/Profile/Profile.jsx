@@ -22,7 +22,7 @@ function Profile({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <CartShop color={COLORS.lightRed} />
+      <CartShop color={COLORS.lightRed} navigation={navigation} />
       <ScrollView
         ref={animatedValue}
         scrollEventThrottle={16}

@@ -3,12 +3,14 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import {
   BottomWelcome,
+  Cart,
   ConfirmEmail,
   CreateAccount,
   CreateAccountNext,
   HomeTab,
   Login,
   NewDetail,
+  Payment,
   PersonalSetting,
   ProductDetail,
   ProductMenu,
@@ -57,7 +59,7 @@ export default function AppNavigator() {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={token ? "HomeTab" : "BottomWelcome"}
+        initialRouteName={token ? "Payment" : "BottomWelcome"}
         // initialRouteName={"PersonalSetting"}
       >
         <Stack.Screen name="BottomWelcome" component={BottomWelcome} />
@@ -70,6 +72,8 @@ export default function AppNavigator() {
         <Stack.Screen name="CreateAccount" component={CreateAccount} />
         <Stack.Screen name="CreateAccountNext" component={CreateAccountNext} />
         <Stack.Screen name="PersonalSetting" component={PersonalSetting} />
+        <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen name="Payment" component={Payment} />
         <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
     </NavigationContainer>

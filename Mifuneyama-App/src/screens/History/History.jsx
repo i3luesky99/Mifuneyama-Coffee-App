@@ -20,7 +20,7 @@ function History({ navigation }) {
   const animatedValue = useRef(new Animated.Value(0)).current;
   const orders = [
     {
-      id: 1,
+      product_id: 1,
       category_id: 1,
       name: "Cafe1",
       category_name: "Tiệm 1",
@@ -31,7 +31,7 @@ function History({ navigation }) {
       created_at: "11/06/2023",
     },
     {
-      id: 2,
+      product_id: 2,
       category_id: 2,
       name: "Cafe2",
       category_name: "Tiệm 2",
@@ -42,7 +42,7 @@ function History({ navigation }) {
       created_at: "11/02/2023",
     },
     {
-      id: 11,
+      product_id: 11,
       category_id: 1,
       name: "Cafe1",
       category_name: "Tiệm 1",
@@ -53,7 +53,7 @@ function History({ navigation }) {
       created_at: "11/06/2023",
     },
     {
-      id: 6,
+      product_id: 6,
       category_id: 1,
       name: "Cafe6",
       category_name: "Tiệm 1",
@@ -63,7 +63,7 @@ function History({ navigation }) {
       created_at: "11/06/2023",
     },
     {
-      id: 7,
+      product_id: 7,
       category_id: 1,
       name: "Cafe7",
       category_name: "Tiệm 1",
@@ -74,7 +74,7 @@ function History({ navigation }) {
       created_at: "11/06/2023",
     },
     {
-      id: 8,
+      product_id: 8,
       category_id: 1,
       name: "Cafe8",
       category_name: "Tiệm 1",

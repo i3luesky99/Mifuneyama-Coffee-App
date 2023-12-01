@@ -1,24 +1,20 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
-import { COLORS, GLOBAL_STYLES, SIZES } from "../../../themes";
+import { COLORS, GLOBAL_STYLES, SCREEN_PADDING, SIZES } from "../../../themes";
 import { formatCurrencyVND } from "../../../themes/themes";
 import ImageOrders from "./ImageOrders";
-function Products({ item, navigation }) {
-  const onChangeToProductDetail = (id) => {
-    navigation.navigate("ProductDetail", { product: item, isHistory: true });
-  };
 
+function Products({ item, navigation }) {
   return (
-    <TouchableOpacity onPress={() => onChangeToProductDetail(item.id)}>
-      <View style={styles.product}>
-        <ImageOrders path={item.path} />
+    <View style={styles.product}>
+      <View style={{ flexDirection: "row", paddingTop: 15 }}>
+        <ImageOrders path={item.path} styleImg={{ width: 100, height: 100 }} />
         <View style={styles.productRight}>
-          <View>
-            <Text style={styles.productName}>{item.name}</Text>
-            <Text style={styles.productSource}>
-              {formatCurrencyVND(item.price)}
-            </Text>
-          </View>
+          <Text style={styles.productName}>{item.category_name}</Text>
+          <Text style={styles.productName}>{item.name}</Text>
+          <Text style={styles.productSource}>
+            {formatCurrencyVND(item.price)} x {item.quantity}
+          </Text>
           <View
             style={[
               styles.productType,
@@ -31,32 +27,33 @@ function Products({ item, navigation }) {
             {item?.type === 1 ? (
               <Text style={styles.productText}>THƯỜNG</Text>
             ) : (
-              <Text style={styles.productText}> CAO CẤP </Text>
+              <Text style={styles.productText}>CAO CẤP</Text>
             )}
-          </View>
-          <View style={styles.productBottom}>
-            <Text style={styles.productWeight}>{item.item_kind}</Text>
-            <Text style={styles.productGuild}>{item.guild}</Text>
           </View>
         </View>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  image: {
-    height: 150,
-    width: 150,
+  buttonDelete: {
+    height: "100%",
+    width: 65,
+    backgroundColor: COLORS.lightRed,
+    ...GLOBAL_STYLES.flexCenter,
   },
-
   product: {
     flexDirection: "row",
-    marginTop: 25,
+    justifyContent: "space-between",
+    height: 140,
+    backgroundColor: COLORS.white,
+    paddingLeft: 10,
+    borderBottomColor: COLORS.grey,
+    borderBottomWidth: 1,
   },
   productBottom: {
     flexDirection: "row",
-    marginTop: 13,
   },
   productGuild: {
     color: COLORS.normalBlack,
@@ -72,6 +69,7 @@ const styles = StyleSheet.create({
   },
   productRight: {
     marginLeft: 20,
+    gap: 5,
   },
   productSource: {
     color: COLORS.normalBlack,
@@ -88,13 +86,11 @@ const styles = StyleSheet.create({
     width: 70,
     ...GLOBAL_STYLES.flexCenter,
     borderRadius: SIZES.base - 2,
-    marginTop: 10,
   },
   productWeight: {
     color: COLORS.normalBlack,
     fontSize: SIZES.medium,
     fontWeight: "500",
-    marginRight: 20,
   },
 });
 export default Products;

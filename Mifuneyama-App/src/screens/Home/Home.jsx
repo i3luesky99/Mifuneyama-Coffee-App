@@ -15,6 +15,7 @@ import "moment-timezone";
 import Content from "./components/Content";
 import BottomDrawer from "./components/BottomDrawer";
 import CartShop from "../../components/CartShop";
+import { useSelector } from "react-redux";
 
 export default function Home({ navigation }) {
   const HEADER_HEIGHT = 420; //Header
@@ -22,6 +23,9 @@ export default function Home({ navigation }) {
   const DOWN = 245; //Bottom
   const hours = moment.tz("Asia/Ho_Chi_Minh").format("HH");
   const greetingOpacity = new Animated.Value(0);
+  const userDetail = useSelector((state) => state.user);
+
+  const fullName = userDetail ? userDetail?.userName : "";
 
   let greetingText = "Chào buổi sáng";
 
@@ -50,7 +54,7 @@ export default function Home({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <CartShop />
+      <CartShop navigation={navigation} />
       <ScrollView
         style={{ ...SCREEN_PADDING }}
         showsVerticalScrollIndicator={false}
@@ -68,7 +72,9 @@ export default function Home({ navigation }) {
           <Animated.View
             style={[styles.bottomShopName, { opacity: greetingOpacity }]}
           >
-            <Text style={styles.greeting}>{greetingText} bạn Hieu </Text>
+            <Text style={styles.greeting}>
+              {greetingText} bạn {fullName}
+            </Text>
           </Animated.View>
         </View>
         <Content HEIGHT_CONTENT={HEIGHT_CONTENT} navigation={navigation} />
