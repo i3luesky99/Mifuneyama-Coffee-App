@@ -5,6 +5,9 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: [],
   reducers: {
+    destroyCart: (state, action) => {
+      return [];
+    },
     addCartDetail: (state, action) => {
       const newItem = action.payload;
       // Check if the product_id already exists in the cart
@@ -55,5 +58,6 @@ export const {
   increaseQuantity,
   decreaseQuantity,
   deleteCartDetail,
+  destroyCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;

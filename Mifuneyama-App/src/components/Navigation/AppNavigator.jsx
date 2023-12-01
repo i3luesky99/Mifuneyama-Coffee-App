@@ -5,6 +5,7 @@ import {
   BottomWelcome,
   Cart,
   ConfirmEmail,
+  ConfirmPayment,
   CreateAccount,
   CreateAccountNext,
   HomeTab,
@@ -59,7 +60,7 @@ export default function AppNavigator() {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={token ? "Payment" : "BottomWelcome"}
+        initialRouteName={token ? "HomeTab" : "BottomWelcome"}
         // initialRouteName={"PersonalSetting"}
       >
         <Stack.Screen name="BottomWelcome" component={BottomWelcome} />
@@ -74,6 +75,7 @@ export default function AppNavigator() {
         <Stack.Screen name="PersonalSetting" component={PersonalSetting} />
         <Stack.Screen name="Cart" component={Cart} />
         <Stack.Screen name="Payment" component={Payment} />
+        <Stack.Screen name="ConfirmPayment" component={ConfirmPayment} />
         <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
     </NavigationContainer>

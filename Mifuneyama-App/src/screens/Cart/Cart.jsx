@@ -15,11 +15,12 @@ import {
   WINDOW_HEIGHT,
   WINDOW_WIDTH,
 } from "../../themes/themes";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "../Register/components/Header";
-
+import { addMultiProduct } from "../../store/productSlice";
 function Cart({ navigation }) {
   const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   //   const cart = [
   //     {
   //       product_id: 1,
@@ -108,6 +109,10 @@ function Cart({ navigation }) {
     });
     return sum(totalArray);
   };
+  const handleBuyNow = () => {
+    dispatch(addMultiProduct(cart));
+    navigation.navigate("Payment");
+  };
 
   return (
     <View style={styles.container}>
@@ -169,7 +174,7 @@ function Cart({ navigation }) {
             </View>
             <TouchableOpacity
               style={[styles.button, { backgroundColor: COLORS.lightRed }]}
-              // onPress={handleBuyNow}
+              onPress={handleBuyNow}
             >
               <Text style={styles.buttonText}>Mua hàng</Text>
             </TouchableOpacity>

@@ -14,87 +14,91 @@ import {
   WINDOW_HEIGHT,
   WINDOW_WIDTH,
 } from "../../themes/themes";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "../Register/components/Header";
 import Address from "./components/Address";
+import { destroyProduct } from "../../store/productSlice";
+import { destroyCart } from "../../store/cartSlice";
 
 function Payment({ navigation }) {
-  //   const cart = useSelector((state) => state.cart);
-  const cart = [
-    {
-      product_id: 1,
-      category_id: 1,
-      name: "Cafe1",
-      category_name: "Tiệm 1",
-      type: 1,
-      price: "100000",
-      kind: "100",
-      path: require("../../../assets/images/picture/product_1.png"),
-      created_at: "11/06/2023",
-      quantity: 1,
-    },
-    {
-      product_id: 2,
-      category_id: 1,
-      name: "Cafe1",
-      category_name: "Tiệm 1",
-      type: 1,
-      price: "100000",
-      kind: "100",
-      path: require("../../../assets/images/picture/product_1.png"),
-      created_at: "11/06/2023",
-      quantity: 1,
-    },
-    {
-      product_id: 1,
-      category_id: 1,
-      name: "Cafe1",
-      category_name: "Tiệm 1",
-      type: 1,
-      price: "100000",
-      kind: "100",
-      path: require("../../../assets/images/picture/product_1.png"),
-      created_at: "11/06/2023",
-      quantity: 1,
-    },
-    {
-      product_id: 2,
-      category_id: 1,
-      name: "Cafe1",
-      category_name: "Tiệm 1",
-      type: 1,
-      price: "100000",
-      kind: "100",
-      path: require("../../../assets/images/picture/product_1.png"),
-      created_at: "11/06/2023",
-      quantity: 1,
-    },
-    {
-      product_id: 1,
-      category_id: 1,
-      name: "Cafe1",
-      category_name: "Tiệm 1",
-      type: 1,
-      price: "100000",
-      kind: "100",
-      path: require("../../../assets/images/picture/product_1.png"),
-      created_at: "11/06/2023",
-      quantity: 1,
-    },
-    {
-      product_id: 2,
-      category_id: 1,
-      name: "Cafe1",
-      category_name: "Tiệm 1",
-      type: 1,
-      price: "100000",
-      kind: "100",
-      path: require("../../../assets/images/picture/product_1.png"),
-      created_at: "11/06/2023",
-      quantity: 1,
-    },
-  ];
-
+  const cart = useSelector((state) => state.productBuying);
+  const dispatch = useDispatch();
+  // console.log(cart);
+  // const cart = [
+  //   {
+  //     product_id: 1,
+  //     category_id: 1,
+  //     name: "Cafe1",
+  //     category_name: "Tiệm 1",
+  //     type: 1,
+  //     price: "100000",
+  //     kind: "100",
+  //     path: require("../../../assets/images/picture/product_1.png"),
+  //     created_at: "11/06/2023",
+  //     quantity: 1,
+  //   },
+  //   {
+  //     product_id: 2,
+  //     category_id: 1,
+  //     name: "Cafe1",
+  //     category_name: "Tiệm 1",
+  //     type: 1,
+  //     price: "100000",
+  //     kind: "100",
+  //     path: require("../../../assets/images/picture/product_1.png"),
+  //     created_at: "11/06/2023",
+  //     quantity: 1,
+  //   },
+  //   {
+  //     product_id: 1,
+  //     category_id: 1,
+  //     name: "Cafe1",
+  //     category_name: "Tiệm 1",
+  //     type: 1,
+  //     price: "100000",
+  //     kind: "100",
+  //     path: require("../../../assets/images/picture/product_1.png"),
+  //     created_at: "11/06/2023",
+  //     quantity: 1,
+  //   },
+  //   {
+  //     product_id: 2,
+  //     category_id: 1,
+  //     name: "Cafe1",
+  //     category_name: "Tiệm 1",
+  //     type: 1,
+  //     price: "100000",
+  //     kind: "100",
+  //     path: require("../../../assets/images/picture/product_1.png"),
+  //     created_at: "11/06/2023",
+  //     quantity: 1,
+  //   },
+  //   {
+  //     product_id: 1,
+  //     category_id: 1,
+  //     name: "Cafe1",
+  //     category_name: "Tiệm 1",
+  //     type: 1,
+  //     price: "100000",
+  //     kind: "100",
+  //     path: require("../../../assets/images/picture/product_1.png"),
+  //     created_at: "11/06/2023",
+  //     quantity: 1,
+  //   },
+  //   {
+  //     product_id: 2,
+  //     category_id: 1,
+  //     name: "Cafe1",
+  //     category_name: "Tiệm 1",
+  //     type: 1,
+  //     price: "100000",
+  //     kind: "100",
+  //     path: require("../../../assets/images/picture/product_1.png"),
+  //     created_at: "11/06/2023",
+  //     quantity: 1,
+  //   },
+  // ];
+  const shipFee = 30000;
   const sum = (array) => {
     return array.reduce(
       (accumulator, currentValue) => accumulator + currentValue,
@@ -107,6 +111,12 @@ function Payment({ navigation }) {
       return value.price * value.quantity;
     });
     return sum(totalArray);
+  };
+
+  const handleNextToConfirm = () => {
+    navigation.navigate("ConfirmPayment");
+    dispatch(destroyCart());
+    dispatch(destroyProduct());
   };
 
   return (
@@ -185,14 +195,31 @@ function Payment({ navigation }) {
               paddingBottom: 20,
               flexDirection: "row",
               justifyContent: "space-between",
+              marginBottom: 120,
             }}
           >
-            <View style={{ width: "40%", gap: 10 }}>
+            <View style={{ width: "50%", gap: 10 }}>
               <Text>Chi tiết thanh toán</Text>
-              <Text>Chi tiết thanh toán</Text>
+              <Text>Tổng tiền hàng</Text>
+              <Text>Tổng chi phí vận chuyển</Text>
+              <Text style={{ fontSize: 18 }}>Tổng thanh toán</Text>
             </View>
-            <View style={{ width: "30%", gap: 10 }}>
-              <Text> {formatCurrencyVND(totalPrice())}</Text>
+            <View style={{ gap: 17 }}>
+              <Text></Text>
+              <Text style={{ textAlign: "right" }}>
+                {formatCurrencyVND(totalPrice())}
+              </Text>
+              <Text style={{ textAlign: "right" }}>
+                {formatCurrencyVND(shipFee)}
+              </Text>
+              <Text
+                style={[
+                  styles.buttonText,
+                  { color: COLORS.lightRed, textAlign: "right", fontSize: 15 },
+                ]}
+              >
+                {formatCurrencyVND(totalPrice() + shipFee)}
+              </Text>
             </View>
           </View>
         </ScrollView>
@@ -219,14 +246,14 @@ function Payment({ navigation }) {
                 { color: COLORS.lightRed, textAlign: "center", fontSize: 15 },
               ]}
             >
-              {formatCurrencyVND(totalPrice())}
+              {formatCurrencyVND(totalPrice() + shipFee)}
             </Text>
           </View>
           <TouchableOpacity
             style={[styles.button, { backgroundColor: COLORS.lightRed }]}
-            // onPress={handleBuyNow}
+            onPress={handleNextToConfirm}
           >
-            <Text style={styles.buttonText}>Mua hàng</Text>
+            <Text style={styles.buttonText}>Đặt hàng</Text>
           </TouchableOpacity>
         </View>
       </View>

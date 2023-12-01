@@ -18,13 +18,16 @@ import { TouchableWithoutFeedback } from "react-native";
 import { ScrollView } from "react-native";
 import { LoginIcon } from "../../../assets/images";
 import { saveObjectToStorage } from "../../themes/themes";
+import { setUserDetail } from "../../store/userSlice";
+import { useDispatch } from "react-redux";
 
 function Login({ navigation }) {
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const [warning, setWarning] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const dispatch = useDispatch();
+  
   const onHandleLogin = async () => {
     // setLoading(true);
     try {
@@ -40,6 +43,7 @@ function Login({ navigation }) {
         userName: "Hieu Nguyen",
         userPoint: 10,
       };
+      dispatch(setUserDetail(user));
       saveObjectToStorage("USER_DETAIL", user);
       initState();
       setLoading(false);

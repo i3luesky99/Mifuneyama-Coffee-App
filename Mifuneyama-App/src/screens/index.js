@@ -17,3 +17,4 @@ export { default as CreateAccountNext } from "./Register/screens/CreateAccountNe
 export { default as PersonalSetting } from "./PersonalSetting/PersonalSetting";
 export { default as Cart } from "./Cart/Cart";
 export { default as Payment } from "./Payment/Payment";
+export { default as ConfirmPayment } from "./ConfirmPayment/ConfirmPayment";
